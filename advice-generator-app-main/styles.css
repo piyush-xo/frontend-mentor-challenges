@@ -47,6 +47,10 @@ body {
   cursor: pointer;
 }
 
+.diceContainer:hover {
+  box-shadow: -3px 0px 25px -1px rgba(83,255,171,1);
+}
+
 .diceContainer:active .dice {
   transform: scale(0.85);
 }
@@ -71,5 +75,9 @@ body {
     left:44%;
     width: 35px;
     height: 35px;
+  }
+  .dice {
+    width: 15px;
+    height:15px;
   }
 }
