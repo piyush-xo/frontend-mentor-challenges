@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Manrope"
+    />
+    <title>Frontend Mentor | Advice generator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        margin-top: 200px;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <script>
+      generate()
+      function generate() {
+        fetch("https://api.adviceslip.com/advice")
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result);
+            document.getElementById("adviceId").innerHTML =
+              "ADVICE #" + result.slip.id;
+            document.getElementById("adviceText").innerHTML =
+              '"' + result.slip.advice + '"';
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div id="adviceId"></div>
+      <p id="adviceText">Loading...</p>
+      <img src="./images/pattern-divider-desktop.svg" class="divider" />
+      <div class="diceContainer" onclick="generate()">
+        <img src="./images/icon-dice.svg" class="dice" />
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Piyush Mehta</a>.
+    </div>
+  </body>
+</html>
